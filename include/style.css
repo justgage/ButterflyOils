@@ -1,4 +1,66 @@
+
+
 #wrapper {
    width:900px;
-   margin:0 auto;
+   margin:20px auto;
+   font-family: Georgia, serif;
 }
+
+#header {
+   margin-bottom:3em;
+}
+
+#logo {
+   font-size:4em;
+   font-family: 'Engagement', cursive;
+   float: left;
+}
+
+#logo a {
+   color:black;
+   text-decoration:none;
+}
+
+#logo a:hover {
+   color:darkgrey;
+   text-decoration:none;
+}
+
+#tagline {
+   margin:32px 22px 0 ;
+   font-family:serif;
+   font-family:serif;
+   float: left;
+}
+
+#nav {
+   float:right;
+   margin:32px 12px 0 ;
+}
+
+#nav ul li {
+   float:left;
+   padding:0.5em;
+   margin-left:1em;
+}
+
+.float-fix {
+   clear: both;
+}
+
+h1 {
+   font-size:2em;
+   margin:20px 0;
+   border-bottom:2px solid darkgrey;
+}
+
+h2 {
+   font-size:1.5em;
+   margin:20px 0;
+}
+
+#content p {
+   margin:20px 10px;
+   line-height:1.5em;
+}
+
