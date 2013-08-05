@@ -7,7 +7,6 @@
    <title>ButterflyOils.com</title>
    <link rel="stylesheet" href="<?=SITEURL?>/include/reset.css" type="text/css" media="screen" charset="utf-8">
    <link rel="stylesheet" href="<?=SITEURL?>/include/style.css" type="text/css" media="screen" charset="utf-8">
-   <link href='http://fonts.googleapis.com/css?family=Engagement' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <div id="wrapper">

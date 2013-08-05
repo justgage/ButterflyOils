@@ -1,4 +1,7 @@
 
+body {
+   font-size: 15px;
+}
 
 #wrapper {
    width:900px;
@@ -62,5 +65,10 @@ h2 {
 #content p {
    margin:20px 10px;
    line-height:1.5em;
+}
+
+#footer {
+   background-color:lightgray;
+   padding: 2em;
 }
 

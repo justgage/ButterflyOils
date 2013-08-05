@@ -1,5 +1,6 @@
 <?php include 'include/header.php'; ?>
 <div id="content">
+   <!-- this is just some dummy code -->
    <h1>This is a title</h1>
    <h2>This is a subtitle</h1>
    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec urna tortor, suscipit at nisl et, bibendum rhoncus leo. Sed viverra, mauris eu consectetur suscipit, nibh quam iaculis massa, at aliquam dui nibh non odio. Pellentesque consequat laoreet sem. Curabitur eget augue vitae nisl tempus ultrices. Ut luctus molestie nibh, ut lacinia urna vehicula et. Fusce ac erat aliquam, interdum dui sit amet, malesuada quam. Nam auctor porta nulla ac fermentum. Aenean at pharetra nisl.</p>
