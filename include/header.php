@@ -11,7 +11,7 @@
 <body>
 <div id="wrapper">
 <div id="header">
-   <p id="logo"> <a href="<?=SITEURL?>">ButterflyOils.com</a> </p> 
+   <p id="logo"> <a href="<?=SITEURL?>"><img src="/butterfly/img/logo.png" alt="Butterfly Oils" /></a> </p> 
    <p id="tagline">Pure essential Oils</p>
    <div id="nav">
       <ul>

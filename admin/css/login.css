@@ -1,4 +1,12 @@
 #login {
+   margin:0 auto;
+   width: 300px;
    padding:20px;
-   margin:20px auto;
+   text-align:center;
+}
+
+#error {
+   background: #ab2727;
+   color: white;
+   padding: 1.5em;
 }
