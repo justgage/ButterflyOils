@@ -14,7 +14,7 @@ if (isset($_POST['username'])) {
 </head>
    <body>
    <div id="login">
-      <p><img src="../img/logo.png" />Admin Login<p>
+      <p>Admin Login for:<img src="../img/logo.png" /><p>
       <?php if ($username != "") { echo '<p id="error">Sorry wrong username or password.</p>'; } ?>
          <form action="login.php" method="post" accept-charset="utf-8">
             <p>Username: <input type="text" name="username" value="<?php echo $username; ?>"></p>

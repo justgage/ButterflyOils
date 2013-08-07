@@ -1,12 +1,17 @@
 
 body {
    font-size: 15px;
+   /*background-image:url('/butterfly/img/paris-blur.jpg');*/
+   background-repeat:no-repeat;
+   background-size:cover;
 }
 
 #wrapper {
    width:900px;
    margin:20px auto;
+   padding:20px;
    font-family: Georgia, serif;
+   background-color:white;
 }
 
 #header {
@@ -16,6 +21,17 @@ body {
 #logo {
    font-size:4em;
    float: left;
+}
+
+#logo img {
+   border:solid 2px white;
+   opacity:1;
+   filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+#logo img:hover {
+   border:solid 2px lightgray;
+   opacity:0.4;
+   filter:alpha(opacity=40); /* For IE8 and earlier */
 }
 
 #logo a {
@@ -68,6 +84,11 @@ h2 {
 
 #footer {
    background-color:lightgray;
-   padding: 2em;
+   padding: 1em;
 }
+
+#oil-list tr td {
+   padding: 0.5em;
+} 
+
 
