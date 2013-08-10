@@ -12,9 +12,9 @@
 - Information on purchaces in back end. 
 
 ##Todo
-- get wroking with MySql.
-- make a login pannel.
 - Make it able to add and remove oils.
+- Load info for oils. 
+- WORK WITH PAYPAL
 
 ##Ideas.
 - JQuery search and adding to shopping cart.

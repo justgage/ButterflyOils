@@ -1,0 +1,75 @@
+<?php
+require_once($_SERVER['DOCUMENT_ROOT'] . '/butterfly/admin/include/redirect.php');
+
+include_once($_SERVER['DOCUMENT_ROOT'] . '/butterfly/admin/include/header.php');
+?>
+
+<script type="text/javascript" charset="utf-8">
+    function submitForm(action)
+    {
+        document.getElementById('oils-form').action = action;
+        document.getElementById('oils-form').submit();
+    }
+</script>
+
+
+<h1>Oils Management</h1>
+<div id="oil-list">
+
+
+<form id="oils-form" action="#" method="post" accept-charset="utf-8">
+<input type="button" onclick="submitForm('oils/new.php')" value="new oil" />
+<input type="button" onclick="submitForm('oils/hide.php')" value="hide" />
+<input type="button" onclick="submitForm('oils/show.php')" value="show" />
+<input type="button" onclick="submitForm('oils/delete.php')" value="delete" />
+
+<table id='oil-list'>
+<th class='cell_checkbox'>x</th>
+<th class='cell_visible'>visible</th>
+<th class='cell_price'>price</th>
+<th class='cell_name'>name</th>
+<th class='cell_description'>description</th>
+
+<?php
+/************************************
+ * This is the list of oils
+ ***********************************/
+$oils = $db->oils_array();
+
+$output = "";
+
+/************************************
+ * print out each row of the table
+ * of oils
+ ***********************************/
+foreach ($oils as $single) {
+   $shown = "HIDDEN";
+   if ($single['visible'] == true) {
+      $shown = "public";
+   }
+
+   $single['description'] = substr($single['description'],0,250).'...';
+   
+   //heredoc format for strings
+   $output .= <<<EOT
+   <tr class="oil-list">
+      <td class = "cell_checkbox"> <input type='checkbox' name='id' value={$single['id']}> </td>
+      <td class = "cell_visible"> $shown </td>
+      <td class = "cell_price"> \${$single['price']} </td>
+      <td class = "cell_name"> <a href='oils/edit.php?id={$single['id']}'>{$single['name']}</a> </td>
+      <td class = "cell_description"> {$single['description']} </td>
+   </tr>
+EOT;
+}
+
+echo $output;
+
+
+?>
+</table>
+</form>
+
+<?php
+include_once('include/footer.php');
+?>
+
