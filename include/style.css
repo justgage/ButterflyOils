@@ -122,13 +122,14 @@ h3 {
 }
 
 .product {
-   width:300px;
+   width:30%;
    margin:1em;
+   padding:1em;
    float:left;
+   background:#f9f9f9;
 }
 
 .price { 
-   float:right;
    font-size:2.5em;
 }
 
@@ -146,5 +147,28 @@ h3 {
    color:darkblue;
 }
 
+.product img {
+   margin:0 auto ;
+
+}
+
+.product h3 {
+   font-size:1.6em;
+   margin:20px 0;
+}
+
+.product h3 a {
+   font-size:1.6em;
+   margin:20px 0;
+   color:darkblue;
+   text-decoration:none;
+}
+.product h3 a:hover {
+   text-decoration:underline;
+}
+
+.product h3 a:visited {
+   color:darkblue;
+}
 
 

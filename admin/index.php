@@ -16,13 +16,56 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/butterfly/admin/include/header.php');
 <h1>Oils Management</h1>
 <div id="oil-list">
 
+<h2>Pages</h2>
 
 <form id="oils-form" action="#" method="post" accept-charset="utf-8">
-<input type="button" onclick="submitForm('oils/new.php')" value="new oil" />
+
+<input type="button" onclick="submitForm('pages/add.php')" value="new page" />
+<input type="button" onclick="submitForm('pages/delete.php')" value="delete" />
+
+<table id='page-list'>
+<th class='cell_checkbox'>x</th>
+<th class='cell_name'>name</th>
+<th class='cell_description'>content</th>
+
+<?php
+/************************************
+ * This is the list of pages
+ ***********************************/
+$pages = $db->pages_array();
+
+$output = "";
+
+/************************************
+ * print out each row of the table
+ * of pages
+ ***********************************/
+foreach ($pages as $single) {
+   $single['content'] = substr($single['content'],0,250).'...';
+   
+   //heredoc format for strings
+   $output .= <<<EOT
+   <tr class="oil-list">
+      <td class = "cell_checkbox"> <input type='checkbox' name='id' value={$single['id']}> </td>
+      <td class = "cell_name"> <a href='pages/edit.php?id={$single['id']}'>{$single['name']}</a> </td>
+      <td class = "cell_content"> {$single['content']} </td>
+   </tr>
+EOT;
+}
+
+echo $output;
+
+
+?>
+</table>
+</form>
+
+<h2>Oils</h2>
+
+<input type="button" onclick="submitForm('oils/add.php')" value="new oil" />
 <input type="button" onclick="submitForm('oils/hide.php')" value="hide" />
 <input type="button" onclick="submitForm('oils/show.php')" value="show" />
 <input type="button" onclick="submitForm('oils/delete.php')" value="delete" />
-
 <table id='oil-list'>
 <th class='cell_checkbox'>x</th>
 <th class='cell_visible'>visible</th>

@@ -1,31 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/butterfly/admin/include/redirect.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/butterfly/admin/include/header.php');
-
-if (isset($_POST)) {
-   if (isset($_POST['id'])) {
-      $db->set_oil($_POST['id'], $_POST['name'], $_POST['desciption'], $_POST['price'], $_POST['visible']);
-      $single = $db->get_oil($_POST['id']);
-   }
-}
-
-if(isset($_GET['id']))
-{
-   $single = $db->get_oil($_GET['id']);
-}
-
-if ($single == false) {
-   echo"<h2>Invalid oil. please go back to oil list</h2>";
-}
-else
-{
-
-   $checked = "unchecked";
-   if ($single['visible'] == true) 
-   {
-      $checked = "checked";
-   }
-
 ?>
 
 <script type="text/javascript" charset="utf-8">
@@ -37,15 +12,15 @@ else
 </script>
 
 
-<form id="oils-edit" action="edit.php" method="post" accept-charset="utf-8">
-<h1>Edit Oil "<?=$single['name']?>"</h1>
+<form id="oils-edit" action="add_submit.php" method="post" accept-charset="utf-8">
+<h1>Edit Oil</h1>
 
 <div id="oils-form">
-<p><input type="button" onclick="submitForm('update.php')" value="&larr; save back to oils list"></p>
-   <input type="hidden" name="id" value="<?=$single['id']?>">
-   <p>Price $<input type="text" name="price" value="<?=$single['price']?>"></p>
-   <p>Name <input type="text" name="name" value="<?=$single['name']?>"></p>
-   <p>Visable <input type="checkbox" name="visible" checked="<?=$single['visible']?>"></p>
+<p><input type="button" onclick="submitForm('add_submit.php')" value="add oil"></p>
+   <input type="hidden" name="id" value="">
+   <p>Price $<input type="text" name="price" value=""></p>
+   <p>Name <input type="text" name="name" value=""></p>
+   <p>Visible <input type="checkbox" name="visible" checked=""></p>
    <div id="markdown-help">
       <h2>Markdown help</h2>
       <p>
@@ -79,11 +54,8 @@ else
          This is a line under that title
       </blockquote>
    </div>
-   Description: <p><textarea name="desciption" id="desciption"><?=$single['description']?></textarea></p>
-   Preview: <blockquote><?php echo Markdown($single['description']);?></blockquote>
-
-
-   <p><input type="submit" value="Save and Preview"></p>
+   Description: <p><textarea name="desciption" id="desciption"></textarea></p>
+   <p><input type="submit" value="add oil"></p>
    </form>
       
    <br/>
@@ -108,6 +80,5 @@ textarea.style.height = Math.min(textarea.scrollHeight, 300) + 30 + "px";
 </script>
 
 <?php
-}//end else (if the query wasn't false)
 include_once($_SERVER['DOCUMENT_ROOT'] . '/butterfly/admin/include//footer.php');
 ?>
