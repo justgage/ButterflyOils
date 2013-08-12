@@ -39,30 +39,30 @@ else
 <p><input type="button" onclick="submitForm('update.php')" value="&larr;save back to list"></p>
    <input type="hidden" name="id" value="<?=$single['id']?>">
    <p>Name <input type="text" name="name" value="<?=$single['name']?>"></p>
-   Content: <p><textarea name="content" id="content"><?=$single['content']?></textarea></p>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/butterfly/admin/include/markdown_help.php'); ?>
+   Content:<p><textarea name="content" id="content-edit"><?=$single['content']?></textarea></p>
    <p><input type="submit" value="Save and Preview"></p>
+   Preview: <blockquote><?php echo Markdown($single['content']);?></blockquote>
    </form>
 
-<?php
-include($_SERVER['DOCUMENT_ROOT'] . '/butterfly/admin/include/markdown_help.php');
-?>
+   <br/>
+   <br/>
+   <br class="float-fix" />
+
       
 </div> <!--page edit -->
 
 <script type="text/javascript" charset="utf-8">
-var textarea = document.getElementById("content");
-var limit = 200;
+
+var textarea = document.getElementById("content-edit");
+
 
 textarea.onkeydown = function(){
-   textarea.style.height = "";
-   textarea.style.height = Math.min(textarea.scrollHeight, 300) + 30 + "px";
+  textarea.style.height = ""; /* Reset the height*/
+  textarea.style.height = textarea.scrollHeight + "px";
 }
 
-
-//set the height when the page loads
-textarea.style.height = "";
-textarea.style.height = Math.min(textarea.scrollHeight, 300) + 30 + "px";
-
+textarea.onkeydown ();
 </script>
 
 <?php

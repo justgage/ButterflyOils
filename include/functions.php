@@ -184,9 +184,10 @@ class database {
             $output = "";
             $output .= <<<EOF
 <div class="product">
-<h3><a href="single.php?id=$id">$name</a></h3>
-<p class='price'>\$$price</p>
-<a href="single.php?id=$id"><img src='img/bottle.jpg' /></a>
+   <h3><a href="single.php?id=$id">$name</a></h3>
+   <p class='price'>\$$price</p>
+   <a href="single.php?id=$id"><img src='img/bottle.jpg' /></a>
+   <a href="shopping/cart_add.php?id=$id">Add to cart</a>
 </div>
 
 EOF;

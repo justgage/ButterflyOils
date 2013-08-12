@@ -31,6 +31,3 @@
          This is a line under that title
       </blockquote>
    </div>
-   <br/>
-   <br/>
-   <br class="float-fix" />

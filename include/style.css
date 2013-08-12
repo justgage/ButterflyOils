@@ -147,6 +147,13 @@ h3 {
    color:darkblue;
 }
 
+#pages-edit textarea {
+   width: 50%;
+   min-height: 2em;
+   font-family:monospace;
+   color:darkblue;
+}
+
 .product img {
    margin:0 auto ;
 
@@ -157,17 +164,15 @@ h3 {
    margin:20px 0;
 }
 
-.product h3 a {
-   font-size:1.6em;
-   margin:20px 0;
+a {
    color:darkblue;
    text-decoration:none;
 }
-.product h3 a:hover {
+a:hover {
    text-decoration:underline;
 }
 
-.product h3 a:visited {
+a:visited {
    color:darkblue;
 }
 

@@ -4,7 +4,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/butterfly/admin/include/header.php');
 
 if (isset($_POST)) {
    if (isset($_POST['id'])) {
-      $db->set_oil($_POST['id'], $_POST['name'], $_POST['desciption'], $_POST['price'], $_POST['visible']);
+      $db->set_oil($_POST['id'], $_POST['name'], $_POST['description'], $_POST['price'], $_POST['visible']);
       $single = $db->get_oil($_POST['id']);
    }
 }
@@ -46,44 +46,12 @@ else
    <p>Price $<input type="text" name="price" value="<?=$single['price']?>"></p>
    <p>Name <input type="text" name="name" value="<?=$single['name']?>"></p>
    <p>Visable <input type="checkbox" name="visible" checked="<?=$single['visible']?>"></p>
-   <div id="markdown-help">
-      <h2>Markdown help</h2>
-      <p>
-         <em>Markdown is a way you style your text. Here is a simple guide on how to use it.</em>
-      </p>
-      <h3>Titles</h3>
-      <p>if you want to have a title you need a # at the start of the line.</p>
-      <p>for example:</p>
-      <blockquote>
-         <code>
-            <p>#This is my title</p>
-            <p>This is a line under that title</p>
-         </code>
-      </blockquote>
-
-      <p>will look like this when you load the website:</p>
-
-      <blockquote>
-         <h1>This is my title</h1>
-         <p>This is a line under that title</p>
-      </blockquote>
-      <p>use 2 of them to get a smaller title</p>
-      <blockquote>
-         <code>
-            </p>##This is my title</p>
-            <p>This is a line under that title<p>
-         </code>
-      </blockquote>
-      <blockquote>
-         <h2>This is my title</h2>
-         This is a line under that title
-      </blockquote>
-   </div>
-   Description: <p><textarea name="desciption" id="desciption"><?=$single['description']?></textarea></p>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/butterfly/admin/include/markdown_help.php'); ?>
+   Description: <p><textarea name="description" id="description"><?=$single['description']?></textarea></p>
+   <p><input type="submit" value="Save and Preview"></p>
    Preview: <blockquote><?php echo Markdown($single['description']);?></blockquote>
 
 
-   <p><input type="submit" value="Save and Preview"></p>
    </form>
       
    <br/>
@@ -91,23 +59,21 @@ else
    <br class="float-fix" />
 </div> <!--oils edit -->
 
-<script type="text/javascript" charset="utf-8">
-var textarea = document.getElementById("desciption");
-var limit = 200;
-
-textarea.onkeydown = function(){
-   textarea.style.height = "";
-   textarea.style.height = Math.min(textarea.scrollHeight, 300) + 30 + "px";
-}
-
-
-//set the height when the page loads
-textarea.style.height = "";
-textarea.style.height = Math.min(textarea.scrollHeight, 300) + 30 + "px";
-
-</script>
 
 <?php
 }//end else (if the query wasn't false)
 include_once($_SERVER['DOCUMENT_ROOT'] . '/butterfly/admin/include//footer.php');
 ?>
+<script type="text/javascript" charset="utf-8">
+
+var textarea = document.getElementById("description");
+
+
+textarea.onkeydown = function(){
+  textarea.style.height = ""; /* Reset the height*/
+  textarea.style.height = textarea.scrollHeight + "px";
+}
+
+textarea.onkeydown ();
+
+</script>

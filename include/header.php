@@ -15,8 +15,16 @@
    <p id="tagline">Pure essential Oils</p>
    <div id="nav">
       <ul>
-         <li>Home<li>
-         <li>About us<li>
+<li><a href="index.php">Shop</a><li>
+<?php
+$pages = $db->pages_array();
+
+foreach ($pages as $single) {
+   echo "<li><a href='page.php?id={$single['id' ]}'>{$single['name']}</a><li>";
+}
+
+?>
+
       </ul>
    </div>
    <br class="float-fix"/>
