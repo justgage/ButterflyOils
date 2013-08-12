@@ -46,7 +46,7 @@ foreach ($pages as $single) {
    //heredoc format for strings
    $output .= <<<EOT
    <tr class="oil-list">
-      <td class = "cell_checkbox"> <input type='checkbox' name='id' value={$single['id']}> </td>
+      <td class = "cell_checkbox"> <input type='checkbox' name='id[]' value={$single['id']}> </td>
       <td class = "cell_name"> <a href='pages/edit.php?id={$single['id']}'>{$single['name']}</a> </td>
       <td class = "cell_content"> {$single['content']} </td>
    </tr>

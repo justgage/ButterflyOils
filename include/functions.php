@@ -144,6 +144,26 @@ class database {
          return $result;
       }
 
+      public function delete_page($id)
+      {
+         foreach ($id as $single) {
+            $sql = "DELETE FROM pages WHERE id=$single;";
+
+            $query = $this->db->prepare($sql);
+            $result = $query->execute();
+
+            if ($result == false) {
+               echo "failed to delete page #$single";
+            }
+
+
+         }
+
+         echo "Deleted " . count($id) . " Pages.";
+
+         return $result;
+      }
+
       public function oils_array()
       {
          $sql = 'SELECT * FROM oils;';
