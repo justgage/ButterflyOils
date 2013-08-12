@@ -110,6 +110,14 @@ h3 {
    padding: 1em;
 }
 
+#oil-list {
+   width:100%;
+}
+
+#oil-list .cell_name {
+   width:20%;
+}
+
 #oil-list tr td {
    padding: 0.5em;
    border-bottom:1px solid darkgrey;
