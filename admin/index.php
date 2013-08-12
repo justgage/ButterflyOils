@@ -8,7 +8,12 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/butterfly/admin/include/header.php');
     function submitForm(action)
     {
         document.getElementById('oils-form').action = action;
-        document.getElementById('oils-form').submit();
+        if (action.search("delete") == -1) {
+          document.getElementById('oils-form').submit();
+        }
+        else if (confirm("Are you sure you want to delete these pages?"))  {
+          document.getElementById('oils-form').submit();
+        }
     }
 </script>
 
