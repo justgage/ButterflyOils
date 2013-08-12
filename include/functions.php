@@ -3,6 +3,11 @@
 define("SITEURL", "http://localhost/butterfly/");
 include_once($_SERVER['DOCUMENT_ROOT'] . '/butterfly/admin/lib/markdown.php');
 
+if (!isset($site_title)) {
+   $site_title = 'Home';
+}
+$site_name = 'ButterflyOils.com';
+
 class database {
    /**
       * oils setup:
@@ -187,7 +192,7 @@ class database {
    <h3><a href="single.php?id=$id">$name</a></h3>
    <p class='price'>\$$price</p>
    <a href="single.php?id=$id"><img src='img/bottle.jpg' /></a>
-   <a href="shopping/cart_add.php?id=$id">Add to cart</a>
+   <a target="blank" href="shopping/cart_add.php?id=$id">Add to cart</a>
 </div>
 
 EOF;

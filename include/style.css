@@ -184,4 +184,14 @@ a:visited {
    color:darkblue;
 }
 
+.left {
+   float:left;
+}
 
+.right {
+   float:right;
+}
+
+#cart {
+   margin:20px;
+}

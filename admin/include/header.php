@@ -4,7 +4,7 @@
 <html>
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-   <title>ButterflyOils.com</title>
+   <title>ADMIN - ButterflyOils.com</title>
    <link rel="stylesheet" href="<?=SITEURL?>/include/reset.css" type="text/css" media="screen" charset="utf-8">
    <link rel="stylesheet" href="<?=SITEURL?>/include/style.css" type="text/css" media="screen" charset="utf-8">
 </head>
