@@ -8,6 +8,12 @@ if (!isset($site_title)) {
 }
 $site_name = 'ButterflyOils.com';
 
+
+function money_echo($money)
+{
+   return "\$ " . floatval($money);
+}
+
 class database {
    /**
       * oils setup:
@@ -29,6 +35,8 @@ class database {
 
       public function set_oil($id, $name, $description, $price, $visible)
       {
+
+         $price = floatval($price);
 
          if ($visible == "on") {
             $visible = TRUE;

@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
 ?>
 
 <h3><a href="index.php">&larr; back to shop</a></h3>
-<h1><?=$single['name']?></h1>
+<h1><?=$single['name']?> <a class='right' target="blank" href="shopping/cart_add.php?id=<?php echo $_GET['id'] ?>">Add to cart</a></h1>
 <img src='img/bottle.jpg' />
 <p>$<?=$single['price']?></p>
 <div id="oil-info">

@@ -3,6 +3,11 @@ em {
    font-style:italic;
 }
 
+sup {
+   font-size: 0.5em;
+   margin-bottom:0.25em;
+}
+
 code {
    font-family:monospace;
    color:darkblue;
@@ -112,7 +117,7 @@ h3 {
    padding: 1em;
 }
 
-#oil-list #page-list {
+#oil-list, #page-list {
    width:100%;
 }
 
@@ -123,6 +128,7 @@ h3 {
 #oil-list tr td {
    padding: 0.5em;
    border-bottom:1px solid darkgrey;
+   text-align: center;
 } 
 
 #oil-list tr th {
