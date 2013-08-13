@@ -5,7 +5,11 @@ include '../include/header.php';
 ?>
 
 <h1>Shopping cart</h1>
+<ul>
+
+	<p><a href="cart_clear.php">Clear all items</a>
 <p><a href="cart_clear.php">Clear all items</a>
+</ul>
 </p>
 
 <?php

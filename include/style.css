@@ -26,8 +26,9 @@ body {
 }
 
 #wrapper {
-   width:900px;
-   margin:20px auto;
+   width:90%;
+   max-width:900px;
+   margin:10px auto;
    padding:20px;
    font-family: Georgia, serif;
    background-color:white;
@@ -46,6 +47,7 @@ body {
    border:solid 2px white;
    opacity:1;
    filter:alpha(opacity=100); /* For IE8 and earlier */
+   max-width:100%;
 }
 #logo img:hover {
    border:solid 2px lightgray;
@@ -110,7 +112,7 @@ h3 {
    padding: 1em;
 }
 
-#oil-list {
+#oil-list #page-list {
    width:100%;
 }
 
@@ -130,7 +132,8 @@ h3 {
 }
 
 .product {
-   width:30%;
+   width:25%;
+   min-width:;
    margin:1em;
    padding:1em;
    float:left;
@@ -173,15 +176,16 @@ h3 {
 }
 
 a {
-   color:darkblue;
+   color:#034D00;
    text-decoration:none;
 }
 a:hover {
+   color:#034D00;
    text-decoration:underline;
 }
 
 a:visited {
-   color:darkblue;
+   color:#034D00;
 }
 
 .left {

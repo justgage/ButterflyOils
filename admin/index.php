@@ -11,7 +11,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/butterfly/admin/include/header.php');
         if (action.search("delete") == -1) {
           document.getElementById('oils-form').submit();
         }
-        else if (confirm("Are you sure you want to delete these pages?"))  {
+        else if (confirm("Are you sure you want to delete these pages?\n:will\n These will be gone forever!"))  {
           document.getElementById('oils-form').submit();
         }
     }

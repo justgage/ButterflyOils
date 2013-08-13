@@ -164,6 +164,26 @@ class database {
          return $result;
       }
 
+      public function delete_oil($id)
+      {
+         foreach ($id as $single) {
+            $sql = "DELETE FROM oils WHERE id=$single;";
+
+            $query = $this->db->prepare($sql);
+            $result = $query->execute();
+
+            if ($result == false) {
+               echo "failed to delete oil #$single";
+            }
+
+
+         }
+
+         echo "Deleted " . count($id) . " Oils.";
+
+         return $result;
+      }
+
       public function oils_array()
       {
          $sql = 'SELECT * FROM oils;';
@@ -210,9 +230,9 @@ class database {
             $output .= <<<EOF
 <div class="product">
    <h3><a href="single.php?id=$id">$name</a></h3>
-   <p class='price'>\$$price</p>
-   <a href="single.php?id=$id"><img src='img/bottle.jpg' /></a>
-   <a target="blank" href="shopping/cart_add.php?id=$id">Add to cart</a>
+<p>   <a href="single.php?id=$id"><img style="width:100%" src='img/bottle.jpg' /></a> </p>
+   <p class='left price'>\$$price</p>
+   <p class='right'><a target="blank" href="shopping/cart_add.php?id=$id">Add to cart</a></p>
 </div>
 
 EOF;
