@@ -10,7 +10,19 @@
 </head>
 <body>
 <div class="right" id="cart">
-   <a href="<?=SITEURL?>/shopping/shopping_cart.php"><img class="right" src="<?=SITEURL?>/img/cart.png"> </a>
+   <a href="<?=SITEURL?>/shopping/shopping_cart.php">
+   Shopping Cart (
+<?php
+session_start();
+if (isset($_SESSION['cart'])) {
+   echo count($_SESSION['cart']); 
+}
+else { echo 0; }
+
+session_write_close();?>
+)
+      <img class="right" src="<?=SITEURL?>/img/cart.png"> 
+   </a>
 </div>
 <div id="wrapper">
 <div id="header">

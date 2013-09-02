@@ -12,11 +12,18 @@ if ($_POST) {
 
 	// update items
 	foreach($cart_items as $id => $count) {
-		$_SESSION['cart'][$id]['count'] = $count;
+		if (floor($count) <= 0) {
+			unset($_SESSION['cart'][$id]);
+		}
+		else {
+			$_SESSION['cart'][$id]['count'] = floor($count);
+		}
 	}
 
 }
+
 session_write_close();
+
 ?>
 
 <h1>Shopping cart</h1>
@@ -52,6 +59,7 @@ if (isset($_SESSION['cart'])) {
 	echo "
 	<tr>
 		<th>price</th>
+		<th>each</th>
 		<th>name</th>
 		<th>amount</th>
 		<th>remove</th>
@@ -65,8 +73,9 @@ if (isset($_SESSION['cart'])) {
 		echo "<tr>";
 		$result =  $db->get_oil($id['id']);
 
-      $total += $result['price'];
+      $total += $id['count'] * $result['price'];
 
+		echo "<td>" . "\$" . $result['price'] * $id['count'] . "</td>";
 		echo "<td>" . "\$" . $result['price'] . "</td>";
 		echo "<td><a href='" . SITEURL . "/single.php?id={$result['id']}'>" . $result['name'] . "</a></td>";
 		echo "
@@ -81,7 +90,7 @@ if (isset($_SESSION['cart'])) {
 	}
 
 	echo "</table>";
-   echo  "<h3>Total \$" . $total . "</h3>";
+   echo  "<h3>Total \$" . $total . " USD</h3>";
 }
 else {
 	echo "<h2>No items, visit the <a href='../index.php'>shop</a> to add some!</h2>";
