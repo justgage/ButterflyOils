@@ -19,6 +19,9 @@
       </ul>
    </div>
    <br class="float-fix"/>
+<div id="message">
+   
+</div>
 </div>
 
 

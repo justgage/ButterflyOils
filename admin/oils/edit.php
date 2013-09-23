@@ -68,12 +68,12 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/butterfly/admin/include//footer.php')
 
 var textarea = document.getElementById("description");
 
-
 textarea.onkeydown = function(){
   textarea.style.height = ""; /* Reset the height*/
   textarea.style.height = textarea.scrollHeight + "px";
 }
 
 textarea.onkeydown ();
+
 
 </script>

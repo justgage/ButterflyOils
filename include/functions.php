@@ -154,6 +154,10 @@ class database {
 
       public function delete_page($id)
       {
+         $reslut = false;
+
+         echo var_dump($id);
+
          foreach ($id as $single) {
             $sql = "DELETE FROM pages WHERE id=$single;";
 

@@ -4,18 +4,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/butterfly/admin/include/redirect.php'
 include_once($_SERVER['DOCUMENT_ROOT'] . '/butterfly/admin/include/header.php');
 ?>
 
-<script type="text/javascript" charset="utf-8">
-    function submitForm(action)
-    {
-        document.getElementById('oils-form').action = action;
-        if (action.search("delete") == -1) {
-          document.getElementById('oils-form').submit();
-        }
-        else if (confirm("Are you sure you want to delete these pages?\n\n These will be gone forever!"))  {
-          document.getElementById('oils-form').submit();
-        }
-    }
-</script>
 
 
 <h1>Oils Management</h1>
@@ -23,7 +11,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/butterfly/admin/include/header.php');
 
 <h2>Pages</h2>
 
-<form id="oils-form" action="#" method="get" accept-charset="utf-8">
+<form id="oils-form" action="#" method="post" accept-charset="utf-8">
 
 <input type="button" onclick="submitForm('pages/add.php')" value="new page" />
 <input type="button" onclick="submitForm('pages/delete.php')" value="delete" />
@@ -63,7 +51,6 @@ echo $output;
 
 ?>
 </table>
-</form>
 
 <h2>Oils</h2>
 
@@ -116,6 +103,21 @@ echo $output;
 ?>
 </table>
 </form>
+<script type="text/javascript" charset="utf-8">
+
+function submitForm(action)
+    {
+        document.getElementById('oils-form').action = action;
+        if (action.search("delete") == -1) {
+          document.getElementById('oils-form').submit();
+        }
+        else if (confirm("Are you sure you want to delete these pages?\n\n These will be gone forever!"))  {
+          document.getElementById('oils-form').submit();
+        }
+    }
+
+
+</script>
 
 <?php
 include_once('include/footer.php');
