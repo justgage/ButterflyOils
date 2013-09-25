@@ -16,36 +16,36 @@ function money_echo($money)
 
 class database {
    /**
-    * oils setup:
-    *  id 	name 	description 	price 	time 	visible 
+      * oils setup:
+      *  id 	name 	description 	price 	time 	visible 
     **/
 
-   private $dsn = "mysql:dbname=butterfly_DB;host=localhost";
-   private $username = "bot";
-   private $pass = "uQceH4FqnS99Fmv8";
-   private $db;
+      private $dsn = "mysql:dbname=butterfly_DB;host=localhost";
+      private $username = "bot";
+      private $pass = "uQceH4FqnS99Fmv8";
+      private $db;
 
-   function __construct() {
-      try {
-         $this->db = new PDO($this->dsn, $this->username, $this->pass);
-      } catch (PDOException $e) {
-         echo 'ERROR:Connection failed: ' . $e->getMessage();
-      }
-   }
-
-   public function set_oil($id, $name, $description, $price, $visible)
-   {
-
-      $price = floatval($price);
-
-      if ($visible == "on") {
-         $visible = TRUE;
-      }
-      else {
-         $visible = FALSE;
+      function __construct() {
+         try {
+            $this->db = new PDO($this->dsn, $this->username, $this->pass);
+         } catch (PDOException $e) {
+            echo 'ERROR:Connection failed: ' . $e->getMessage();
+         }
       }
 
-      try {
+      public function set_oil($id, $name, $description, $price, $visible)
+      {
+
+         $price = floatval($price);
+
+         if ($visible == "on") {
+            $visible = TRUE;
+         }
+         else {
+            $visible = FALSE;
+         }
+
+         try {
          $sql = 'UPDATE `oils` SET `name`=:name,`description`=:description,`price`=:price,`visible`=:visible WHERE id=:id';
 
 
@@ -59,18 +59,18 @@ class database {
             ':id'=>$id));
 
          $result = $query->fetch();
-      } catch (PDOException $e) { 
-         echo 'ERROR:Connection failed: ' . $e->getMessage();
+         } catch (PDOException $e) { 
+            echo 'ERROR:Connection failed: ' . $e->getMessage();
+         }
+
+
+         return $result;
       }
 
+      public function set_page($id, $name, $content)
+      {
 
-      return $result;
-   }
-
-   public function set_page($id, $name, $content)
-   {
-
-      try {
+         try {
          $sql = 'UPDATE `pages` SET `name`=:name,`content`=:content WHERE id=:id';
 
 
@@ -81,161 +81,161 @@ class database {
             ':id'=>$id));
 
          $result = $query->fetch();
-      } catch (PDOException $e) { 
-         echo 'ERROR:Connection failed: ' . $e->getMessage();
-      }
-
-      return $result;
-   }
-
-   public function add_oil($name, $description, $price, $visible)
-   {
-      if ($visible == "on") {
-         $visible = TRUE;
-      }
-      else {
-         $visible = FALSE;
-      }
-
-      try {
-         $sql = 'INSERT INTO `oils` (name, description, price, visible)
-            VALUES (:name, :description, :price, :visible);';
-
-         $query = $this->db->prepare($sql);
-         echo $query->execute(array(
-            ':name'=> $name,
-            ':description'=> $description,
-            ':price'=> $price,
-            ':visible'=> $visible));
-      } catch (PDOException $e) { 
-         echo 'ERROR:Connection failed: ' . $e->getMessage();
-      }
-   }
-
-   public function add_page($name, $content)
-   {
-
-      try {
-         $sql = 'INSERT INTO `pages` (name, content)
-            VALUES (:name, :content);';
-
-         $query = $this->db->prepare($sql);
-         echo $query->execute(array(
-            ':name'=> $name,
-            ':content'=> $content));
-      } catch (PDOException $e) { 
-         echo 'ERROR:Connection failed: ' . $e->getMessage();
-      }
-   }
-
-   public function get_oil($id)
-   {
-      $sql = "SELECT * FROM oils WHERE id=$id;";
-
-      $query = $this->db->prepare($sql);
-      $query->execute();
-
-      $result = $query->fetch();
-
-      return $result;
-   }
-
-   public function get_page($id)
-   {
-      $sql = "SELECT * FROM pages WHERE id=$id;";
-
-      $query = $this->db->prepare($sql);
-      $query->execute();
-
-      $result = $query->fetch();
-
-      return $result;
-   }
-
-   public function delete_page($id)
-   {
-      foreach ($id as $single) {
-         $sql = "DELETE FROM pages WHERE id=$single;";
-
-         $query = $this->db->prepare($sql);
-         $result = $query->execute();
-
-         if ($result == false) {
-            echo "failed to delete page #$single";
+         } catch (PDOException $e) { 
+            echo 'ERROR:Connection failed: ' . $e->getMessage();
          }
 
-
+         return $result;
       }
 
-      echo "Deleted " . count($id) . " Pages.";
-
-      return $result;
-   }
-
-   public function delete_oil($id)
-   {
-      foreach ($id as $single) {
-         $sql = "DELETE FROM oils WHERE id=$single;";
-
-         $query = $this->db->prepare($sql);
-         $result = $query->execute();
-
-         if ($result == false) {
-            echo "failed to delete oil #$single";
+      public function add_oil($name, $description, $price, $visible)
+      {
+         if ($visible == "on") {
+            $visible = TRUE;
+         }
+         else {
+            $visible = FALSE;
          }
 
+         try {
+            $sql = 'INSERT INTO `oils` (name, description, price, visible)
+               VALUES (:name, :description, :price, :visible);';
 
+            $query = $this->db->prepare($sql);
+            echo $query->execute(array(
+               ':name'=> $name,
+               ':description'=> $description,
+               ':price'=> $price,
+               ':visible'=> $visible));
+         } catch (PDOException $e) { 
+            echo 'ERROR:Connection failed: ' . $e->getMessage();
+         }
       }
 
-      echo "Deleted " . count($id) . " Oils.";
+      public function add_page($name, $content)
+      {
 
-      return $result;
-   }
+         try {
+            $sql = 'INSERT INTO `pages` (name, content)
+               VALUES (:name, :content);';
 
-   public function oils_array()
-   {
-      $sql = 'SELECT * FROM oils;';
+            $query = $this->db->prepare($sql);
+            echo $query->execute(array(
+               ':name'=> $name,
+               ':content'=> $content));
+         } catch (PDOException $e) { 
+            echo 'ERROR:Connection failed: ' . $e->getMessage();
+         }
+      }
 
-      $query = $this->db->prepare($sql);
-      $query->execute();
+      public function get_oil($id)
+      {
+         $sql = "SELECT * FROM oils WHERE id=$id;";
 
-      $result = $query->fetchAll(PDO::FETCH_ASSOC);
+         $query = $this->db->prepare($sql);
+         $query->execute();
 
-      return $result;
-   }
+         $result = $query->fetch();
 
-   public function pages_array()
-   {
-      $sql = 'SELECT * FROM pages;';
+         return $result;
+      }
 
-      $query = $this->db->prepare($sql);
-      $query->execute();
+      public function get_page($id)
+      {
+         $sql = "SELECT * FROM pages WHERE id=$id;";
 
-      $result = $query->fetchAll(PDO::FETCH_ASSOC);
+         $query = $this->db->prepare($sql);
+         $query->execute();
 
-      return $result;
-   }
+         $result = $query->fetch();
 
-   public function display_oils()
-   {
-      $sql = 'SELECT * FROM oils;';
+         return $result;
+      }
 
-      $query = $this->db->prepare($sql);
-      $query->execute();
+      public function delete_page($id)
+      {
+         foreach ($id as $single) {
+            $sql = "DELETE FROM pages WHERE id=$single;";
 
-      $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            $query = $this->db->prepare($sql);
+            $result = $query->execute();
 
-      foreach ($result as $oils) {
+            if ($result == false) {
+               echo "failed to delete page #$single";
+            }
 
-         $id = $oils['id'];
-         $name = $oils['name'];
-         $description = Markdown($oils['description']);
-         $price = $oils['price'];
-         $time = $oils['time'];
-         $visible = $oils['visible'];
 
-         $output = "";
-         $output .= <<<EOF
+         }
+
+         echo "Deleted " . count($id) . " Pages.";
+
+         return $result;
+      }
+
+      public function delete_oil($id)
+      {
+         foreach ($id as $single) {
+            $sql = "DELETE FROM oils WHERE id=$single;";
+
+            $query = $this->db->prepare($sql);
+            $result = $query->execute();
+
+            if ($result == false) {
+               echo "failed to delete oil #$single";
+            }
+
+
+         }
+
+         echo "Deleted " . count($id) . " Oils.";
+
+         return $result;
+      }
+
+      public function oils_array()
+      {
+         $sql = 'SELECT * FROM oils;';
+
+         $query = $this->db->prepare($sql);
+         $query->execute();
+
+         $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+         return $result;
+      }
+
+      public function pages_array()
+      {
+         $sql = 'SELECT * FROM pages;';
+
+         $query = $this->db->prepare($sql);
+         $query->execute();
+
+         $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+         return $result;
+      }
+
+      public function display_oils()
+      {
+         $sql = 'SELECT * FROM oils;';
+
+         $query = $this->db->prepare($sql);
+         $query->execute();
+
+         $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+         foreach ($result as $oils) {
+
+            $id = $oils['id'];
+            $name = $oils['name'];
+            $description = Markdown($oils['description']);
+            $price = $oils['price'];
+            $time = $oils['time'];
+            $visible = $oils['visible'];
+
+            $output = "";
+            $output .= <<<EOF
 <div class="product">
    <h3><a href="single.php?id=$id">$name</a></h3>
 <p>   <a href="single.php?id=$id"><img style="width:100%" src='img/bottle.jpg' /></a> </p>
@@ -244,41 +244,11 @@ class database {
 </div>
 
 EOF;
-         echo $output;
-
+            echo $output;
+            
+         }
+         echo "<br class='float-fix' />";
       }
-      echo "<br class='float-fix' />";
-   }
-
-   /**
-    * This starts the whole thing going when you first install the application.
-    **/
-   public function create_tables()
-   {
-
-      try {
-         $sql = <<<EOF
-CREATE TABLE oils
-(
-   id mediumint(4),
-   name varchar(256),
-   description text,
-   price decimal(10,2),
-   time timestamp,
-   visible tinyint(1)
-);
-EOF;
-//TODO add another table for pages!!!
-
-         $query = $this->db->prepare($sql);
-         echo $query->execute();
-
-         $result = $query->fetch();
-      } catch (PDOException $e) { 
-         echo 'ERROR:Connection failed: ' . $e->getMessage();
-      }
-      return $result;
-   }
 }
 
 $db = new database();
