@@ -10,4 +10,4 @@
 - Information on purchaces in back end. 
 
 ##Ideas.
-- Importing from ButterflyOils.com
+- Importing from butterflyexpress.net
